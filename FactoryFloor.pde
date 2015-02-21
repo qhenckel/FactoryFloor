@@ -17,6 +17,10 @@ void setup() {
 void draw() {
   background(#838383);
   drawGrid();
+  fill(0,0,255);
+  textAlign(LEFT,TOP);
+  textSize(14);
+  text("(C)onveyor\n(A)ssembler\n(R)otate\n1,2,3: Items", 0, 0);
   for(Machine m : machines) {
     m.draw();
     

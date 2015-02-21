@@ -1,15 +1,24 @@
 class Conveyor extends Machine {
   
-  int speed = 1;
+  int speed;
   
   Conveyor (Location loc, Direction f) {
     super(loc, f);
+    speed = 1;
   }
   
   void run(Item contents){
-    PVector delta = PVector.fromAngle(facing.getRad());
-    delta.setMag(speed);
-    contents.move(delta);
+    PVector a = location.getVector();
+    PVector b = contents.location.getVector();
+    PVector d = PVector.fromAngle(facing.getRad());
+    PVector p = new PVector(-d.y, d.x);
+    float f = p.dot(PVector.sub(b,a));
+    f /= -30;
+    
+    p.setMag(f);
+    d.setMag(speed);
+    d.add(p);
+    contents.move(d);
   }
   
   void draw() {

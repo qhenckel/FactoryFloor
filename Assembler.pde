@@ -11,8 +11,9 @@ class Assembler extends Machine {
     load += contents.type;
     
     if(load >= createType) {
-      PVector delta = PVector.fromAngle(facing.getDegrees());
-      delta.setMag(52);
+      PVector delta = PVector.fromAngle(facing.getRad());
+      delta.setMag(27);
+      contents.setPostistion(location);
       contents.move(delta);
       contents.type = createType;
       load -= createType;
@@ -33,6 +34,8 @@ class Assembler extends Machine {
     textSize(20);
     textAlign(CENTER, CENTER);
     text(createType, 0, 0);
+    text('>', 20, -20);
+    text('>', 20, 15);
     popMatrix();
   }
   
