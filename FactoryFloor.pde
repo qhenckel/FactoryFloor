@@ -1,11 +1,9 @@
 ArrayList<Item> items = new ArrayList<Item>();
 ArrayList<Machine> machines = new ArrayList<Machine>();
 
-int scale = 20;
-
 Machine selected = null;
 PVector offset = new PVector(0, 0);
-
+Location start = null;
 
 void setup() {
   size(800, 600);
@@ -20,27 +18,27 @@ void draw() {
   fill(0,0,255);
   textAlign(LEFT,TOP);
   textSize(14);
-  text("(C)onveyor\n(A)ssembler\n(R)otate\n1,2,3: Items", 0, 0);
+  text("(C)onveyor\n(A)ssembler\n(R)otate\n(S)ettings\n(D)elete\n1,2,3: Items", 0, 0);
   for(Machine m : machines) {
     m.draw();
-    
   }
+  if(selected != null) selected.draw();
   try {
     for(Item i : items) {
       i.draw();
-      Machine mach = onMachine(i.location);
-      if(mach != null) {
+      Machine mach = getMachineAt(i.location);
+      if(mach != null && mach != selected) 
         mach.run(i);
-      }
     }
   } catch(java.util.ConcurrentModificationException e){}
 }
 
 void mousePressed() {
-  Machine i = onMachine(mouseLocation());
+  Machine i = getMachineAt(mouseLocation());
   if(i != null) {
     offset = PVector.sub(i.location.getVector(), mouseVector());
     selected = i;
+    start = selected.location;
   }
 }
 
@@ -48,29 +46,31 @@ void mouseReleased() {
   if(selected != null) {
     if(!selected.location.onGrid()) {
         selected.location.snap();
+        if(getMachineAt(selected.location, selected) != null)
+          selected.location = start;
     }
   }
   
-  selected = null;  
+  selected = null;
+  start = null;
 }
 
 void mouseDragged() {
-  if(selected != null) {
+  if(selected != null)
     selected.location = new Location(PVector.add(mouseVector(), offset));
-    if(selected != onMachine(mouseLocation())) {
-      
-    }
-  }  
 }
 
 void keyTyped() {
   char k = Character.toLowerCase(key);
+  Machine m = getMachineAt(mouseLocation());
   switch(k) {
     case 'c':
-      regMachine(new Conveyor(mouseLocation().snap(), new Direction()));
+      if(m == null)
+        regMachine(new Conveyor(mouseLocation().snap(), new Direction()));
       break;
     case 'a':
-      regMachine(new Assembler(mouseLocation().snap(), new Direction()));
+      if(m == null)
+        regMachine(new Assembler(mouseLocation().snap(), new Direction()));
       break;
      case '1':
      case '2':
@@ -78,10 +78,20 @@ void keyTyped() {
        int type = Character.getNumericValue(key);
        regItem(new Item(type, mouseLocation(), this));
        break;
+     case 's':
+       if(m instanceof Assembler) {
+         Assembler a = (Assembler) m;
+         a.setType(a.getType() + 1);        
+       } 
+       break;
      case 'r':
-       Machine m = onMachine(mouseLocation());
        if(m != null) {
          m.facing.turn(93);
+       }
+       break;
+     case 'd':
+       if(m != null) {
+         removeMachine(m);
        }
        break;
     default:
@@ -89,8 +99,13 @@ void keyTyped() {
   }
 }
 
-Machine onMachine(Location loc) {
+Machine getMachineAt(Location loc) {
+  return getMachineAt(loc, null);
+}
+
+Machine getMachineAt(Location loc, Machine notMe) {
   for(Machine m : machines) {
+    if(m == notMe) continue;
     PVector size = m.getSize();
  
     if(loc.x - m.location.x <= size.x / 2 &&
@@ -101,6 +116,14 @@ Machine onMachine(Location loc) {
       }
     }
   return null;
+}
+
+boolean onMachine(Location loc, Machine notMe) {
+  return getMachineAt(loc, notMe) != null;
+}
+
+boolean onMachine(Location loc) {
+  return onMachine(loc, null);
 }
 
 void regMachine(Machine m) {
@@ -131,5 +154,9 @@ PVector mouseVector() {
 
 void removeItem(Item delete) {
   items.remove(delete);
+}
+
+void removeMachine(Machine delete) {
+  machines.remove(delete);
 }
 

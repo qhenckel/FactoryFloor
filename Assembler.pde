@@ -1,7 +1,7 @@
 class Assembler extends Machine {
   
   private int load = 0;
-  private int createType = 3;
+  private int createType = 1;
   
   Assembler (Location loc, Direction f){
     super(loc, f);
@@ -25,7 +25,6 @@ class Assembler extends Machine {
   void draw() {
     pushMatrix();
     translate(location.x, location.y);
-    rotate(facing.getRad());
     
     fill(255, 255, 0);
     rect(0, 0, 50, 50);
@@ -34,6 +33,10 @@ class Assembler extends Machine {
     textSize(20);
     textAlign(CENTER, CENTER);
     text(createType, 0, 0);
+    
+    rotate(facing.getRad());
+    
+    fill(0);
     text('>', 20, -20);
     text('>', 20, 15);
     popMatrix();
@@ -41,5 +44,13 @@ class Assembler extends Machine {
   
   PVector getSize() {
     return new PVector(50, 50);
+  }
+  
+  void setType(int newType) {
+    createType = newType;    
+  }
+  
+  int getType() {
+    return createType;    
   }
 }
