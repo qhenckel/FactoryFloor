@@ -3,7 +3,7 @@
 Design and efficient factory.
 
 #### Installation:
-- [Download](https://github.com/qhenckel/FactoryFloor/blob/master/Demo.zip?raw=true)
+- [Download](https://github.com/qhenckel/FactoryFloor/releases)
 - Unzip: keep the lib and the .exe together
 - Run: FactoryFloor.exe
 
