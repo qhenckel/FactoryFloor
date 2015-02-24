@@ -1,7 +1,11 @@
 ### Factory Floor
 ---
 Design and efficient factory.
-To play the demo download, unzip and run: https://github.com/qhenckel/FactoryFloor/blob/master/Demo.zip?raw=true
+
+#### Installation:
+- [Download](https://github.com/qhenckel/FactoryFloor/blob/master/Demo.zip?raw=true)
+- Unzip: keep the lib and the .exe together
+- Run: FactoryFloor.exe
 
 #### Instructions:
 You can drag machines around with the mouse.  
@@ -11,11 +15,11 @@ Conveyors move items around.
 #### Key Bindings:
 All of these happen at the mouse location.
 
-| Key | Action |
-|-------|-----------|
-| 1,2,3 | Create Item  |
-| C | Create Conveyor |
-| A | Create Assembler | 
-| R | Rotate Machine |
-| S | Change the output of an assembler|
-| D | Delete Machine|
+| Key   | Action                            |
+|-------|-----------------------------------|
+| 1,2,3 | Create Item                       |
+|   C   | Create Conveyor                   |
+|   A   | Create Assembler                  | 
+|   R   | Rotate Machine                    |
+|   S   | Change the output of an assembler |
+|   D   | Delete Machine                    |
