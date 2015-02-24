@@ -1,3 +1,8 @@
+# =========================
+# Custom Files
+# =========================
+*.zip
+
 .DS_Store
 applet
 application.linux32
