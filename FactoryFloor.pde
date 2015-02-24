@@ -5,6 +5,8 @@ Machine selected = null;
 PVector offset = new PVector(0, 0);
 Location start = null;
 
+static final int SCALE = 50;
+
 void setup() {
   size(800, 600);
   rectMode(CENTER);
@@ -86,7 +88,7 @@ void keyTyped() {
        break;
      case 'r':
        if(m != null) {
-         m.facing.turn(93);
+         m.facing.turn(91);
        }
        break;
      case 'd':
@@ -135,11 +137,11 @@ void regItem(Item i) {
 }
 
 void drawGrid() {
-  for(int x = 25; x < width; x += 50) {
+  for(int x = SCALE/2; x < width; x += SCALE) {
     line(x, 0, x, height);
   }
   
-  for(int y = 25; y < height; y += 50) {
+  for(int y = SCALE/2; y < height; y += SCALE) {
     line(0, y, width, y);
   }
 }

@@ -4,7 +4,7 @@ class Conveyor extends Machine {
   
   Conveyor (Location loc, Direction f) {
     super(loc, f);
-    speed = 1;
+    speed = SCALE / 20;
   }
   
   void run(Item contents){
@@ -13,7 +13,7 @@ class Conveyor extends Machine {
     PVector d = PVector.fromAngle(getFacing().getRad());
     PVector p = new PVector(-d.y, d.x);
     float f = p.dot(PVector.sub(b,a));
-    f /= -30;
+    f /= -SCALE / 10;
     
     p.setMag(f);
     d.setMag(speed);
@@ -29,7 +29,7 @@ class Conveyor extends Machine {
     
     
     fill(255, 0, 0);
-    rect(0, 0, 50, 50);
+    rect(0, 0, SCALE, SCALE);
     
     fill(0);
     line(20, 0, -20, 0);
@@ -39,7 +39,7 @@ class Conveyor extends Machine {
   }
   
   PVector getSize(){
-    PVector size = new PVector(50, 50);
+    PVector size = new PVector(SCALE, SCALE);
     return size;
   }
 }

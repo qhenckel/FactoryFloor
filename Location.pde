@@ -1,7 +1,7 @@
 class Location {
   private float x, y;
   private boolean grid;
-  private int SNAP = 50;
+  private int SNAP = SCALE;
   
   Location(float x, float y) {
     this.x = x;

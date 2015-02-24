@@ -12,7 +12,7 @@ class Assembler extends Machine {
     
     if(load >= createType) {
       PVector delta = PVector.fromAngle(getFacing().getRad());
-      delta.setMag(27);
+      delta.setMag(SCALE/2 + 2);
       contents.setPostistion(getLocation());
       contents.move(delta);
       contents.type = createType;
@@ -28,7 +28,7 @@ class Assembler extends Machine {
     translate(loc.x, loc.y);
     
     fill(255, 255, 0);
-    rect(0, 0, 50, 50);
+    rect(0, 0, SCALE, SCALE);
     
     fill(0);
     textSize(20);
@@ -44,7 +44,7 @@ class Assembler extends Machine {
   }
   
   PVector getSize() {
-    return new PVector(50, 50);
+    return new PVector(SCALE, SCALE);
   }
   
   void setType(int newType) {

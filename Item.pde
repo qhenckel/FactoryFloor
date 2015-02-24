@@ -35,7 +35,7 @@ class Item {
     
     pushMatrix();
     translate(location.x, location.y);
-    rect(0, 0, 20, 20);
+    rect(0, 0, SCALE/2 - 5, SCALE/2 - 5);
     popMatrix();
   }
   
