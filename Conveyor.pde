@@ -1,6 +1,6 @@
 class Conveyor extends Machine {
   
-  int speed;
+  private int speed;
   
   Conveyor (Location loc, Direction f) {
     super(loc, f);
@@ -8,9 +8,9 @@ class Conveyor extends Machine {
   }
   
   void run(Item contents){
-    PVector a = location.getVector();
+    PVector a = getLocation().getVector();
     PVector b = contents.location.getVector();
-    PVector d = PVector.fromAngle(facing.getRad());
+    PVector d = PVector.fromAngle(getFacing().getRad());
     PVector p = new PVector(-d.y, d.x);
     float f = p.dot(PVector.sub(b,a));
     f /= -30;
@@ -23,8 +23,9 @@ class Conveyor extends Machine {
   
   void draw() {
     pushMatrix();
-    translate(location.x, location.y);
-    rotate(facing.getRad());
+    Location loc = getLocation();
+    translate(loc.x, loc.y);
+    rotate(getFacing().getRad());
     
     
     fill(255, 0, 0);

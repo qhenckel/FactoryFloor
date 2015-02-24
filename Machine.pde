@@ -1,6 +1,6 @@
 abstract class Machine {
-  Location location;
-  Direction facing;
+  private Location location;
+  private Direction facing;
   
   Machine (Location loc, Direction f) {
     location = loc;
@@ -12,5 +12,11 @@ abstract class Machine {
   abstract void run(Item contents);
   abstract void draw();
   abstract PVector getSize();
+  Direction getFacing() {
+    return facing;
+  }
   
+  Location getLocation() {
+    return location;
+  }
 }

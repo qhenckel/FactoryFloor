@@ -11,9 +11,9 @@ class Assembler extends Machine {
     load += contents.type;
     
     if(load >= createType) {
-      PVector delta = PVector.fromAngle(facing.getRad());
+      PVector delta = PVector.fromAngle(getFacing().getRad());
       delta.setMag(27);
-      contents.setPostistion(location);
+      contents.setPostistion(getLocation());
       contents.move(delta);
       contents.type = createType;
       load -= createType;
@@ -24,7 +24,8 @@ class Assembler extends Machine {
   
   void draw() {
     pushMatrix();
-    translate(location.x, location.y);
+    Location loc = getLocation();
+    translate(loc.x, loc.y);
     
     fill(255, 255, 0);
     rect(0, 0, 50, 50);
@@ -34,7 +35,7 @@ class Assembler extends Machine {
     textAlign(CENTER, CENTER);
     text(createType, 0, 0);
     
-    rotate(facing.getRad());
+    rotate(getFacing().getRad());
     
     fill(0);
     text('>', 20, -20);

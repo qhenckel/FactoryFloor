@@ -1,8 +1,8 @@
 class Item {
   
-  int type;
-  Location location;
-  FactoryFloor parent;
+  private int type;
+  private Location location;
+  private FactoryFloor parent;
   
   Item(int t, Location l, FactoryFloor p) {
     type = t;
