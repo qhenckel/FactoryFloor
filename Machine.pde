@@ -1,12 +1,14 @@
-abstract class Machine {
+abstract class Machine implements Controlable{
   private Location location;
   private Direction facing;
+  private Controls controls;
   
   Machine (Location loc, Direction f) {
     location = loc;
     location.setGrid(true);
     facing = f;
     f.setSnap(true);
+    controls = new Controls();
   } 
   
   abstract void run(Item contents);
@@ -18,5 +20,12 @@ abstract class Machine {
   
   Location getLocation() {
     return location;
+  }
+  
+  Controls getControls() {
+    return controls;
+  }
+  void setControls(Controls newControls) {
+    controls = newControls;
   }
 }

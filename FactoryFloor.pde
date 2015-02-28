@@ -83,7 +83,8 @@ void keyTyped() {
      case 's':
        if(m instanceof Assembler) {
          Assembler a = (Assembler) m;
-         a.setType(a.getType() + 1);        
+         //a.setType(a.getType() + 1);
+         a.getControls().drawAt(a.getLocation());
        } 
        break;
      case 'r':

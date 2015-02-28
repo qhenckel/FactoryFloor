@@ -5,6 +5,9 @@ class Assembler extends Machine {
   
   Assembler (Location loc, Direction f){
     super(loc, f);
+    Controls controls = new Controls("Assembler");
+    controls.addControl("OutPut", 1);
+    setControls(controls);
   }
   
   void run(Item contents) {
