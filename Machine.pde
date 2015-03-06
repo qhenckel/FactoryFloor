@@ -16,6 +16,10 @@ abstract class Machine {
     return facing;
   }
   
+   void setFacing(Direction f) {
+    facing = f;
+  }
+  
   Location getLocation() {
     return location;
   }

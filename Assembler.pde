@@ -1,7 +1,7 @@
 class Assembler extends Machine {
   
   private int load = 0;
-  private int createType = 1;
+  private int createType = 3;
   
   Assembler (Location loc, Direction f){
     super(loc, f);

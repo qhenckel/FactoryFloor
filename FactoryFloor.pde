@@ -20,7 +20,7 @@ void draw() {
   fill(0,0,255);
   textAlign(LEFT,TOP);
   textSize(14);
-  text("(C)onveyor\n(A)ssembler\n(R)otate\n(S)ettings\n(D)elete\n1,2,3: Items", 0, 0);
+  text("(C)onveyor\n(A)ssembler\n(R)otate\n(S)pliter\n(D)elete\n1,2,3: Items", 0, 0);
   for(Machine m : machines) {
     m.draw();
   }
@@ -81,10 +81,9 @@ void keyTyped() {
        regItem(new Item(type, mouseLocation(), this));
        break;
      case 's':
-       if(m instanceof Assembler) {
-         Assembler a = (Assembler) m;
-         a.setType(a.getType() + 1);        
-       } 
+       if(m == null) {
+         regMachine(new Spliter(mouseLocation().snap(), new Direction(0, true)));
+       }
        break;
      case 'r':
        if(m != null) {
