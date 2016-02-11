@@ -10,7 +10,7 @@ static final int SCALE = 50;
 void setup() {
   size(800, 600);
   rectMode(CENTER);
-  cursor(CROSS);  
+  //cursor(CROSS);  
 }
 
 
@@ -161,4 +161,3 @@ void removeItem(Item delete) {
 void removeMachine(Machine delete) {
   machines.remove(delete);
 }
-
