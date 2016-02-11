@@ -1,13 +1,15 @@
-class Item {
+abstract class Item {
   
-  private int type;
   private Location location;
   private FactoryFloor parent;
   
-  Item(int t, Location l, FactoryFloor p) {
-    type = t;
+  Item(Location l, FactoryFloor p) {
     location = l;
     parent = p;
+  }
+  
+  Location getLocation() {
+    return this.location;
   }
   
   //returns the new location
@@ -21,23 +23,7 @@ class Item {
     return;
   }
   
-  void draw() {
-    switch(type){
-      case 1:
-        fill(0, 255, 0);
-        break;
-      case 2:
-        fill(0, 0, 255);
-        break;
-      default:
-        fill(0);
-    }
-    
-    pushMatrix();
-    translate(location.x, location.y);
-    rect(0, 0, SCALE/2 - 5, SCALE/2 - 5);
-    popMatrix();
-  }
+  abstract void draw();
   
   void delete() {
     parent.removeItem(this);

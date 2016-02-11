@@ -8,18 +8,18 @@ class Assembler extends Machine {
   }
   
   void run(Item contents) {
-    load += contents.type;
-    
-    if(load >= createType) {
-      PVector delta = PVector.fromAngle(getFacing().getRad());
-      delta.setMag(SCALE/2 + 2);
-      contents.setPostistion(getLocation());
-      contents.move(delta);
-      contents.type = createType;
-      load -= createType;
-    } else {
-      contents.delete();
-    }
+//    load += contents.type;
+//    
+//    if(load >= createType) {
+//      PVector delta = PVector.fromAngle(getFacing().getRad());
+//      delta.setMag(SCALE/2 + 2);
+//      contents.setPostistion(getLocation());
+//      contents.move(delta);
+//      contents.type = createType;
+//      load -= createType;
+//    } else {
+//      contents.delete();
+//    }
   }
   
   void draw() {

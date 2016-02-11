@@ -10,7 +10,7 @@ static final int SCALE = 50;
 void setup() {
   size(800, 600);
   rectMode(CENTER);
-  //cursor(CROSS);  
+  cursor(CROSS);  
 }
 
 
@@ -75,10 +75,11 @@ void keyTyped() {
         regMachine(new Assembler(mouseLocation().snap(), new Direction()));
       break;
      case '1':
+       regItem(new RawIron(20, mouseLocation(), this));
+       break;
      case '2':
-     case '3':
-       int type = Character.getNumericValue(key);
-       regItem(new Item(type, mouseLocation(), this));
+       break;
+     case '3':       
        break;
      case 's':
        if(m == null) {

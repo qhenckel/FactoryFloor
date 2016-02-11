@@ -24,16 +24,23 @@ class Spliter extends Machine {
     pushMatrix();
     Location loc = getLocation();
     translate(loc.x, loc.y);
-    rotate(getFacing().getRad());
+    
     
     
     fill(125, 125, 0);
     rect(0, 0, SCALE, SCALE);
     
+    fill(0,255,255);
+    rect(SCALE/2, 0, 5, 5);
+    rect(0, SCALE/2, 5, 5);
+    rect(-SCALE/2, 0, 5, 5);
+    
+    rotate(getFacing().getRad());
+    
     fill(0);
-    line(20, 0, -20, 0);
-    line(20, 0, 10, 10);
-    line(20, 0, 10, -10);
+    line(10, 0, -10, 0);
+    line(10, 0, 5, 5);
+    line(10, 0, 5, -5);
     popMatrix();
   }
   
