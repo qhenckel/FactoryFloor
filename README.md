@@ -1,6 +1,6 @@
 ### Factory Floor
 ---
-Design and efficient factory.
+Design an efficient factory.  This is an older project using [processing](https://processing.org/).  I wanted to build a factory layout and design game.  This was as far as I got before school started again and I later discovered [Factorio](https://www.factorio.com/).
 
 #### Installation:
 - [Download](https://github.com/qhenckel/FactoryFloor/releases)
